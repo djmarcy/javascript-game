@@ -2,12 +2,13 @@
 var count = $("#count");
 var questions = $("#question-txt")
 var answers = $("#answer-choices")
-var resetBtn = document.querySelector("#reset-btn")
-var startBtn = document.querySelector("#start-btn")
+var resetBtn = document.getElementById("reset-btn")
+var startBtn = document.getElementById("start-btn")
 
 // Declare & execute functions
 function startGame() {
-    
+    $("#start-block").css("display", "none");
+
 }
 
 function resetGame () {
