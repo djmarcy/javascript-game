@@ -134,7 +134,7 @@ function getQuestion() {
 
   } else {
   
-    let finalScore = timeLeft
+    $("#final-score").text("Your Score is " + timeLeft + "!")
     console.log(finalScore)
     highScore();
   }
