@@ -104,6 +104,10 @@ h2 {
   margin-bottom: 5px;
 }
 
+#answer-choices {
+  width: 66%;
+}
+
 /* ## High Score*/
 #high-score-submit {
   font-size: 200%;
