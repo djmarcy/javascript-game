@@ -18,7 +18,8 @@ body {
 
 #reset-btn,
 #start-btn,
-#high-score-submit {
+#high-score-submit,
+#reset-btn {
   background-color: peru;
   color: #294b4a;
   font-weight: strong;

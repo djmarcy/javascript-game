@@ -7,7 +7,7 @@ var startBtn = document.getElementById("start-btn");
 var highScoreSubmit = document.getElementById("high-score-submit");
 var answerBtns = document.getElementsByClassName("answers");
 var finalScore = document.getElementById("final-score");
-var resetSave = document.getElementById("answer-btn");
+var resetScore = document.getElementById("reset-btn");
 let currentQuestion = 0;
 var timeLeft = 100;
 
@@ -178,7 +178,7 @@ function saveScore() {
 }
 
 function resetSave() {
-  hallOfFame = [];
+  localStorage.clear();
 }
 
 // Attach event listers to appropriate buttons
