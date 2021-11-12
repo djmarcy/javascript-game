@@ -7,7 +7,7 @@ var startBtn = document.getElementById("start-btn");
 var highScoreSubmit = document.getElementById("high-score-submit");
 var answerBtns = document.getElementsByClassName("answers");
 var finalScore = document.getElementById("final-score");
-var resetScore = document.getElementById("reset-btn");
+// var resetScore = document.getElementById("reset-btn");
 let currentQuestion = 0;
 var timeLeft = 100;
 
@@ -175,15 +175,19 @@ function saveScore() {
         "</li>"
     );
   }
+
+  $("#high-score-initials").val("");
 }
 
-function resetSave() {
-  localStorage.clear();
-}
+// function resetSave() {
+//   localStorage.clear();
+
+//   $("#top-scores").css("display", "none");
+// }
 
 // Attach event listers to appropriate buttons
 startBtn.addEventListener("click", startGame);
 resetBtn.addEventListener("click", resetGame);
 highScoreSubmit.addEventListener("click", saveScore);
-resetScore.addEventListener("click", resetSave);
+// resetScore.addEventListener("click", resetSave);
 // 2nd page for High Scores
