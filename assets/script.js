@@ -6,6 +6,7 @@ var resetBtn = document.getElementById("reset-btn");
 var startBtn = document.getElementById("start-btn");
 var highScoreSubmit = document.getElementById("high-score-submit");
 var answerBtns = document.getElementsByClassName("answers");
+var finalScore = document.getElementById("final-score");
 let currentQuestion = 0;
 var timeLeft = 100;
 
@@ -106,7 +107,9 @@ function startGame() {
      timeLeft--;
      $("#counter").text(timeLeft);
  
-     if (timeLeft === 0) {
+     if (currentQuestion >= qArray.length) {
+       clearInterval(timeInterval)
+     } else if (timeLeft === 0) {
        clearInterval(timeInterval);
  
        $("#counter").text("0");
@@ -121,8 +124,6 @@ function startGame() {
 
 }
 
-
-
 function getQuestion() {
   if (currentQuestion < qArray.length) {
     $("#question-txt").text(qArray[currentQuestion].Question)
@@ -132,6 +133,9 @@ function getQuestion() {
     $("#answer4").text(qArray[currentQuestion].Responses[3])
 
   } else {
+  
+    let finalScore = timeLeft
+    console.log(finalScore)
     highScore();
   }
 
@@ -152,24 +156,6 @@ function getAnswer(event) {
   getQuestion();
 }
 
-function nextQuestion() {
-
-  if (answer === qArray[i].Correct) {
-    $(answer).css("color", "green")
-  } else {
-    timeleft - 5
-  }
-  
-}
-// event handler to capture which button was clicked, and compare it with "correct" key
-
-// what happens if answer is correct? if it's incorrect?
-// if (answer === correct.pair) {
-
-// } else {
-//   counter = counter - 5
-// }
-
 function highScore() {
   $("#question-block").css("display", "none");
   $("#high-scores-block").css("display", "flex");
@@ -181,6 +167,9 @@ function resetGame() {
 
 function saveScore() {
 
+  // Print final score
+
+  $("#final-score").text(finalScore) 
   // set score equal to counter when done with quiz
   var gameScore = {
     Initials: document.getElementById("high-score-initials").input,
