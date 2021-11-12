@@ -135,7 +135,7 @@ function getQuestion() {
   } else {
   
     $("#final-score").text("Your Score is " + timeLeft + "!")
-    console.log(finalScore)
+    console.log(timeLeft)
     highScore();
   }
 
@@ -167,19 +167,16 @@ function resetGame() {
 
 function saveScore() {
 
-  // Print final score
-
-  $("#final-score").text(finalScore) 
-  // set score equal to counter when done with quiz
-  var gameScore = {
-    Initials: document.getElementById("high-score-initials").input,
-    Score: $("#counter").text,
+  let hallOfFame = [""] || JSON.parse(localStorage.getItem("dataKey"));
+  let topScores = {
+    Initials: document.getElementById("high-score-initials").value,
+    Score: timeLeft,
   }
-
-  localStorage.setItem("dataKey", JSON.stringify(gameScore));
+  hallOfFame.push(topScores)
+ 
+  localStorage.setItem("dataKey", JSON.stringify(hallOfFame));
    
 }
-
 
 // Attach event listers to appropriate buttons
 startBtn.addEventListener("click", startGame);
