@@ -84,7 +84,8 @@ h2 {
 }
 
 /* ## Answers */
-.answers {
+.answers,
+#top-scores {
   background-color: #294b4a;
   font-size: 150%;
   color: #a19a90;
@@ -102,6 +103,10 @@ h2 {
 }
 
 .answers:not(:last-child) {
+  margin-bottom: 5px;
+}
+
+#top-scores:not(:last-child) {
   margin-bottom: 5px;
 }
 

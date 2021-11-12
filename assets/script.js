@@ -165,17 +165,23 @@ function resetGame() {
   window.location = window.location.href = "index.html";
 }
 
-function saveScore() {
-
-  let hallOfFame = [""] || JSON.parse(localStorage.getItem("dataKey"));
+let hallOfFame = JSON.parse(localStorage.getItem("dataKey")) || [];
   let topScores = {
     Initials: document.getElementById("high-score-initials").value,
     Score: timeLeft,
   }
+
+function saveScore() {
   hallOfFame.push(topScores)
  
   localStorage.setItem("dataKey", JSON.stringify(hallOfFame));
-   
+
+  
+}
+
+for (let i = 0; i < hallOfFame.length; i++ ) { 
+  $("#top-scores").append(
+    "<li class='scores'>" + hallOfFame[i].Initials + " — " + hallOfFame[i].Score + "</li>")
 }
 
 // Attach event listers to appropriate buttons
