@@ -5,6 +5,9 @@ var answers = $("#answer-choices");
 var resetBtn = document.getElementById("reset-btn");
 var startBtn = document.getElementById("start-btn");
 var highScoreSubmit = document.getElementById("high-score-submit");
+var answerBtns = document.getElementsByClassName("answers");
+let currentQuestion = 0;
+var timeLeft = 100;
 
 // Questions
  var qArray = [
@@ -98,7 +101,6 @@ function startGame() {
   $("#question-block").css("display", "flex");
 
    // Set variable for the timer, and what to do when the timer ends
-   var timeLeft = 100;
 
    var timeInterval = setInterval(function () {
      timeLeft--;
@@ -108,38 +110,46 @@ function startGame() {
        clearInterval(timeInterval);
  
        $("#counter").text("0");
-
-       window.location = window.location.href = "highScores.html";
  
        highScore();
      }
      }, 1000);
 
   // Propogate question & answers
-  for (let i = 0; i < qArray.length; i++) {
-    console.log(qArray.length)
-    $("#question-txt").text(qArray[i].Question);
-    var responses = qArray[i].Responses
+  getQuestion();
+  getAnswer();
 
-    for (let i = 0; i < responses.length; i++) {
-      $("#answer-choices").append(
-        "<li class='answers' onClick='response'>" + responses[i] + "</li>"
-      );
-  
-    } 
+}
+
+
+
+function getQuestion() {
+  if (currentQuestion < qArray.length) {
+    $("#question-txt").text(qArray[currentQuestion].Question)
+    $("#answer1").text(qArray[currentQuestion].Responses[0])
+    $("#answer2").text(qArray[currentQuestion].Responses[1])
+    $("#answer3").text(qArray[currentQuestion].Responses[2])
+    $("#answer4").text(qArray[currentQuestion].Responses[3])
+
+  } else {
+    highScore();
+  }
+
+}
+
+$(".answers").click(getAnswer)
+
+function getAnswer(event) {
+  if ( qArray[currentQuestion].Correct == event.target.innerText ) {
+
+  } else {
+
+    timeLeft -= 5
 
   }
 
-  
-  // function response(onClick) {
-  //   if ( === qArray.Correct) {
-
-  //   }
-  // }
-}
-
-function gatherAnswer() {
-
+  currentQuestion++
+  getQuestion();
 }
 
 function nextQuestion() {
@@ -160,8 +170,6 @@ function nextQuestion() {
 //   counter = counter - 5
 // }
 
-
-
 function highScore() {
   $("#question-block").css("display", "none");
   $("#high-scores-block").css("display", "flex");
@@ -171,9 +179,21 @@ function resetGame() {
   window.location = window.location.href = "index.html";
 }
 
+function saveScore() {
+
+  // set score equal to counter when done with quiz
+  var gameScore = {
+    Initials: document.getElementById("high-score-initials").input,
+    Score: $("#counter").text,
+  }
+
+  localStorage.setItem("dataKey", JSON.stringify(gameScore));
+   
+}
 
 
 // Attach event listers to appropriate buttons
 startBtn.addEventListener("click", startGame);
 resetBtn.addEventListener("click", resetGame);
+highScoreSubmit.addEventListener("click", saveScore);
 // 2nd page for High Scores
