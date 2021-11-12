@@ -110,6 +110,10 @@ h2 {
   margin-bottom: 5px;
 }
 
+li.scores {
+  list-style-type: none;
+}
+
 #answer-choices {
   width: 66%;
 }
