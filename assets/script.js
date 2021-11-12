@@ -7,56 +7,60 @@ var startBtn = document.getElementById("start-btn");
 var highScoreSubmit = document.getElementById("high-score-submit");
 
 // Questions
- var qArray = [ {
-    Question: "What made Black Sabbath unique?",
-    Responses:
-      "They were the first band to use distorted guitars,They were responsible for the iconic 'devil's horns' gesture,Their use of the tritone,The members had all played in famous bands prior",
-    Correct: "Their use of the tritone",
-  },  
-  {
-    Question: "Which style of music most heavily influenced early heavy metal?",
-    Responses: "Blues,Rock and Roll,Folk,Psychadelic Rock",
-    Correct: "Blues",
-  },
-  {
-    Question: "What is typical of the Doom sub-genre of extreme metal?",
-    Responses:
+
+var question1 = {
+   Question: "What made Black Sabbath unique?",
+   Responses:
+     "They were the first band to use distorted guitars,They were responsible for the iconic 'devil's horns' gesture,Their use of the tritone,The members had all played in famous bands prior",
+   Correct: "Their use of the tritone",
+ };
+var question2 = {
+  Question: "Which style of music most heavily influenced early heavy metal?",
+  Responses: "Blues,Rock and Roll,Folk,Psychadelic Rock",
+  Correct: "Blues",
+};
+var question3 = {
+  Question: "What is typical of the Doom sub-genre of extreme metal?",
+  Responses:
     "Frequent references to the video game 'Doom',Low-tuned guitars and slower tempo music meant to evoke a sense of dread,Angry and nihilistic lyrical themes punctuated with rapid instrumentals,None of the above",
-    Correct: "Low-tuned guitars and slower tempo music meant to evoke a sense of dread",
-  },
-  {
-     Question: "Who was the first heavy metal band?",
-     Responses: "Black Sabbath,Led Zeppelin,Coven,Deep Purple",
-     Correct: "Black Sabbath",
-   },
-   {
-     Question: "Who popularized the 'Devil's Horns' hand gesture?",
-     Responses: "Ozzy Osborne,Gene Simmons,Ronnie James Dio,Lemmy Kilmister",
-     Correct: "Ronnie James Dio",
-    },
-    {
-     Question: "Why is Black Metal infamous?",
-     Responses:
-     "Lyrical themes,Church burnings and other acts of violence,Raw and unrefined musical content,All of the above",
-     Correct: "All of the above",
-    },
-   {
-     Question: "Who is the top-selling Metal band of all time?",
-     Responses: "Metallica,Anthrax,Judas Priest,Black Sabbath",
-     Correct: "Metallica",
-   },
-   {
-    Question: "Why is metalcore called metalcore?",
-    Responses:
-      "There isn't a good reason — it's a catch-all term for metal with influences from genres such as rock or punk,It's a fusion of hardcore punk and heavy metal,It's a revivalist movement meant to return metal to its 'core',None of the above",
-    Correct: "It's a fusion of hardcore punk and heavy metal",
-  },
-  {
-   Question: "How did Black Metal get its name?",
-   Responses: "From the name of Venom's second album,In reference to the black-and-white facepaint called 'corpsepaint' that musicians will commonly wear,Because of the heavy lyrical focus on Satanism and anti-Christian sentiment within the genre,Musicians will only wear black when performing",
-    Correct: "From the name of Venom's second album",
-  }
-]
+  Correct:
+    "Low-tuned guitars and slower tempo music meant to evoke a sense of dread",
+};
+var question4 = {
+  Question: "Who was the first heavy metal band?",
+  Responses: "Black Sabbath,Led Zeppelin,Coven,Deep Purple",
+  Correct: "Black Sabbath",
+};
+var question5 = {
+  Question: "Who popularized the 'Devil's Horns' hand gesture?",
+  Responses: "Ozzy Osborne,Gene Simmons,Ronnie James Dio,Lemmy Kilmister",
+  Correct: "Ronnie James Dio",
+};
+var question6 = {
+  Question: "Why is Black Metal infamous?",
+  Responses:
+    "Lyrical themes,Church burnings and other acts of violence,Raw and unrefined musical content,All of the above",
+  Correct: "All of the above",
+};
+var question7 = {
+  Question: "Who is the top-selling Metal band of all time?",
+  Responses: "Metallica,Anthrax,Judas Priest,Black Sabbath",
+  Correct: "Metallica",
+};
+var question8 = {
+  Question: "Why is metalcore called metalcore?",
+  Responses:
+    "There isn't a good reason — it's a catch-all term for metal with influences from genres such as rock or punk,It's a fusion of hardcore punk and heavy metal,It's a revivalist movement meant to return metal to its 'core',None of the above",
+  Correct: "It's a fusion of hardcore punk and heavy metal",
+};
+var question9 = {
+  Question: "How did Black Metal get its name?",
+  Responses: "From the name of Venom's second album,In reference to the black-and-white facepaint called 'corpsepaint' that musicians will commonly wear,Because of the heavy lyrical focus on Satanism and anti-Christian sentiment within the genre,Musicians will only wear black when performing",
+  Correct: "From the name of Venom's second album",
+};
+
+// Store quiz questions
+var qArray = [question1, question2, question3, question4, question5, question6, question7, question8, question9]
 
 
 // event handler to capture which button was clicked, and compare it with "correct" key
@@ -91,19 +95,18 @@ function startGame() {
   }, 1000);
 
   // Propogate question & answers
-  $("#question-txt").text(qArray[i].Question);
+  $("#question-txt").text(question1.Question);
 
   // Split question responses into different segments of the list
   var responses = question1.Responses.split(",");
   console.log(responses);
 
+  // Create list items for each response
   for (i = 0; i < responses.length; i++) {
     $("#answer-choices").append(
       "<li class='answers'>" + responses[i] + "</li>"
     );
   }
-
-  // Create list items for each response
 }
 
 function highScore() {
@@ -115,7 +118,7 @@ function saveScore() {
 
   // set score equal to counter when done with quiz
   var gameScore = document.getElementById("high-score-initials");
-  // store name/score as array of objects; loop through and display highest to lowest
+  // store name/score as array of objects; loop through and display
   localStorage.setItem("Score:", );
 }
 
