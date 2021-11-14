@@ -6,8 +6,12 @@ A fun, interactive quiz about heavy metal!
 ## Installation
 Download to single directory & run index.html.
 
-## License
+## Visuals
+![Quiz Start Screen](assets/quiz_start_screen.png)
 
+![Quiz end screen](assets/quiz_end_screen.png)
+
+## License
 MIT License
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
