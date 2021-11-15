@@ -119,6 +119,7 @@ function startGame() {
   getAnswer();
 }
 
+// Function to retrieve & display questions or display endscreen if none remain
 function getQuestion() {
   if (currentQuestion < qArray.length) {
     $("#question-txt").text(qArray[currentQuestion].Question);
@@ -135,6 +136,7 @@ function getQuestion() {
 
 $(".answers").click(getAnswer);
 
+// Function tocompare whether the answer clicked is correct and return the next question, or is false and subtract 5 seconds from the timer before calling the next question
 function getAnswer(event) {
   if (qArray[currentQuestion].Correct == event.target.innerText) {
   } else {
@@ -154,6 +156,7 @@ function resetGame() {
   window.location = window.location.href = "index.html";
 }
 
+// This is the function used to save prior scores to local memory and then call them upon future visits
 function saveScore() {
   let hallOfFame = JSON.parse(localStorage.getItem("dataKey")) || [];
 
@@ -179,15 +182,7 @@ function saveScore() {
   $("#high-score-initials").val("");
 }
 
-// function resetSave() {
-//   localStorage.clear();
-
-//   $("#top-scores").css("display", "none");
-// }
-
 // Attach event listers to appropriate buttons
 startBtn.addEventListener("click", startGame);
 resetBtn.addEventListener("click", resetGame);
 highScoreSubmit.addEventListener("click", saveScore);
-// resetScore.addEventListener("click", resetSave);
-// 2nd page for High Scores
